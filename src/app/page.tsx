@@ -1,7 +1,10 @@
+"use client"
+
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, ShoppingCart } from "lucide-react";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const games = [
   {
@@ -43,6 +46,8 @@ const games = [
 ];
 
 export default function RugbyTicketSection() {
+  const { data: session, status } = useSession()
+
   return (
     <div className="font-sans" style={{ fontFamily: 'Raleway, sans-serif' }}>
       {/* Add Raleway font */}
@@ -70,9 +75,36 @@ export default function RugbyTicketSection() {
             </nav>
             <div className="flex items-center px-4 gap-4">
               <ShoppingCart className="h-5 w-5" />
-              <button className="bg-green-500 text-white text-sm px-4 py-2 rounded">
-                Login
-              </button>
+              {status === "loading" ? (
+                <div className="bg-gray-400 text-white text-sm px-4 py-2 rounded">
+                  Loading...
+                </div>
+              ) : session ? (
+                <div className="flex items-center gap-2">
+                  <a 
+                    href="/dashboard"
+                    className="text-sm text-lime-400 hover:underline"
+                  >
+                    Dashboard
+                  </a>
+                  <span className="text-sm text-white">
+                    Welcome, {session.user?.name || session.user?.email}
+                  </span>
+                  <button 
+                    onClick={() => signOut()}
+                    className="bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              ) : (
+                <button 
+                  onClick={() => signIn()}
+                  className="bg-green-500 hover:bg-green-600 text-white text-sm px-4 py-2 rounded"
+                >
+                  Login
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -113,7 +145,15 @@ export default function RugbyTicketSection() {
               <p className="text-gray-700 w-1/2">
                 Witness the power, passion, and pride of KCB Rugby Club. The Lions are roaring through the league and maintaining their top spot. Don't miss your chance to be part of the action!
               </p>
-              <Button className="bg-lime-600 hover:bg-lime-700 text-white px-6 py-3 font-medium rounded-sm">
+              <Button className="bg-lime-600 hover:bg-lime-700 text-white px-6 py-3 font-medium rounded-sm"
+                onClick={() => {
+                  if (!session) {
+                    signIn()
+                  } else {
+                    alert("Redirecting to ticket purchase...")
+                  }
+                }}
+              >
                 Buy Tickets Now
               </Button>
             </div>
@@ -157,7 +197,15 @@ export default function RugbyTicketSection() {
                       <div className="text-lg font-bold text-lime-600" style={{ fontFamily: "Raleway, sans-serif" }}>
                         KES {game.price.toLocaleString()}
                       </div>
-                      <Button variant="default" className="bg-lime-600 hover:bg-lime-700 text-white rounded-sm px-4 py-1 text-sm font-medium">
+                      <Button variant="default" className="bg-lime-600 hover:bg-lime-700 text-white rounded-sm px-4 py-1 text-sm font-medium"
+                        onClick={() => {
+                          if (!session) {
+                            signIn()
+                          } else {
+                            alert(`Purchasing ticket for ${game.title}`)
+                          }
+                        }}
+                      >
                         Buy Ticket
                       </Button>
                     </div>
