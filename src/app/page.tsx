@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, ShoppingCart } from "lucide-react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import ChatWidgetWrapper from "@/components/widget";
 
 const games = [
   {
@@ -51,6 +52,7 @@ export default function RugbyTicketSection() {
   return (
     <div className="font-sans" style={{ fontFamily: 'Raleway, sans-serif' }}>
       {/* Add Raleway font */}
+      <ChatWidgetWrapper />
       <style>
         {`
           @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap');
