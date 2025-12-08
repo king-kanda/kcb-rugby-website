@@ -1,6 +1,7 @@
 "use client"
 
 import { useSession } from "next-auth/react"
+import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -16,10 +17,13 @@ export default function Dashboard() {
         <header className="bg-slate-900 text-white p-4">
           <div className="max-w-6xl mx-auto flex items-center justify-between">
             <div className="flex items-center">
-              <img 
+              <Image 
                 src="https://ke.kcbgroup.com/templates/corporate/images/logo.svg" 
                 alt="KCB Logo" 
                 className="h-10 mr-4"
+                width={56}
+                height={40}
+                priority
               />
               <h1 className="text-xl font-bold" style={{ fontFamily: "Raleway, sans-serif" }}>
                 Dashboard
@@ -54,7 +58,7 @@ export default function Dashboard() {
                 <div className="space-y-2">
                   <p><strong>Name:</strong> {session?.user?.name || "N/A"}</p>
                   <p><strong>Email:</strong> {session?.user?.email || "N/A"}</p>
-                  <p><strong>Role:</strong> {(session?.user as any)?.role || "user"}</p>
+                  <p><strong>Role:</strong> {((session?.user as unknown) as Record<string, unknown>)?.role as string || "user"}</p>
                 </div>
               </CardContent>
             </Card>

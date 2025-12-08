@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, ShoppingCart } from "lucide-react";
@@ -66,7 +67,14 @@ export default function RugbyTicketSection() {
           {/* Top navigation bar with dark slate background */}
           <div className="bg-slate-900 flex items-center justify-between ">
             <div className="flex items-center">
-              <img src="https://ke.kcbgroup.com/templates/corporate/images/logo.svg" alt="KCB Logo" className="mr-2 h-14" />
+              <Image 
+                src="https://ke.kcbgroup.com/templates/corporate/images/logo.svg" 
+                alt="KCB Logo" 
+                className="mr-2 h-14" 
+                width={56}
+                height={56}
+                priority
+              />
             </div>
             <nav className="hidden md:flex space-x-6 p-4">
               <a href="#" className="hover:underline">Who We Are</a>
@@ -145,7 +153,7 @@ export default function RugbyTicketSection() {
                 KCB Rugby Club Match Tickets
               </h2>
               <p className="text-gray-700 w-1/2">
-                Witness the power, passion, and pride of KCB Rugby Club. The Lions are roaring through the league and maintaining their top spot. Don't miss your chance to be part of the action!
+                Witness the power, passion, and pride of KCB Rugby Club. The Lions are roaring through the league and maintaining their top spot. Don&apos;t miss your chance to be part of the action!
               </p>
               <Button className="bg-lime-600 hover:bg-lime-700 text-white px-6 py-3 font-medium rounded-sm"
                 onClick={() => {
@@ -176,7 +184,13 @@ export default function RugbyTicketSection() {
             {games.map((game) => (
               <Card key={game.id} className="border-0 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
                 <div className="relative">
-                  <img src={game.image} alt={game.title} className="w-full h-48 object-cover" />
+                  <Image 
+                    src={game.image} 
+                    alt={game.title} 
+                    className="w-full h-48 object-cover" 
+                    width={400}
+                    height={192}
+                  />
                   <div className="absolute top-0 left-0 bg-slate-900 text-white py-1 px-3 font-bold rounded">
                     KCB Rugby
                   </div>
@@ -227,7 +241,13 @@ export default function RugbyTicketSection() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="border border-gray-200 hover:shadow-md transition-all">
-              <img src="https://ke.kcbgroup.com/images/kcb-rfc.jpg" alt="Rugby Match" className="w-full" />
+              <Image 
+                src="https://ke.kcbgroup.com/images/kcb-rfc.jpg" 
+                alt="Rugby Match" 
+                className="w-full" 
+                width={400}
+                height={250}
+              />
               <div className="p-4">
                 <div className="text-sm text-gray-500 mb-2">Feb 20, 2023</div>
                 <h4 className="font-bold text-slate-900 mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>Plucky KCB RFC Unlucky Against Kabras</h4>
@@ -241,7 +261,13 @@ export default function RugbyTicketSection() {
             </div>
             
             <div className="border border-gray-200 hover:shadow-md transition-all">
-              <img src="https://ke.kcbgroup.com/images/kcb-rfc.jpg" alt="Rugby Match" className="w-full" />
+              <Image 
+                src="https://ke.kcbgroup.com/images/kcb-rfc.jpg" 
+                alt="Rugby Match" 
+                className="w-full" 
+                width={400}
+                height={250}
+              />
               <div className="p-4">
                 <div className="text-sm text-gray-500 mb-2">Jan 24, 2023</div>
                 <h4 className="font-bold text-slate-900 mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>KCB RFC MAINTAINS TOP SPOT IN RUGBY LEAGUE</h4>
@@ -255,7 +281,13 @@ export default function RugbyTicketSection() {
             </div>
             
             <div className="border border-gray-200 hover:shadow-md transition-all">
-              <img src="https://ke.kcbgroup.com/images/sports/ruggby_2.jpg" alt="Rugby Match" className="w-full" />
+              <Image 
+                src="https://ke.kcbgroup.com/images/sports/ruggby_2.jpg" 
+                alt="Rugby Match" 
+                className="w-full" 
+                width={400}
+                height={250}
+              />
               <div className="p-4">
                 <div className="text-sm text-gray-500 mb-2">Feb 13, 2023</div>
                 <h4 className="font-bold text-slate-900 mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>Ruthless Lions Fry Oilers In Nakuru</h4>
@@ -269,7 +301,13 @@ export default function RugbyTicketSection() {
             </div>
             
             <div className="border border-gray-200 hover:shadow-md transition-all">
-              <img src="https://ke.kcbgroup.com/images/kcb-rfc-shifts-focus-to-the-national-7s-series.jpg" alt="Rugby Match" className="w-full" />
+              <Image 
+                src="https://ke.kcbgroup.com/images/kcb-rfc-shifts-focus-to-the-national-7s-series.jpg" 
+                alt="Rugby Match" 
+                className="w-full" 
+                width={400}
+                height={250}
+              />
               <div className="p-4">
                 <div className="text-sm text-gray-500 mb-2">Dec 17, 2022</div>
                 <h4 className="font-bold text-slate-900 mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>KCB RFC Extends Unbeaten Run After Nakuru Win</h4>

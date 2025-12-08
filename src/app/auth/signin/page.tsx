@@ -1,12 +1,13 @@
 "use client"
 
-import { useState } from "react"
-import { signIn, getProviders } from "next-auth/react"
+import { useState, Suspense } from "react"
+import { signIn } from "next-auth/react"
 import { useRouter, useSearchParams } from "next/navigation"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function SignIn() {
+function SignInForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -33,7 +34,7 @@ export default function SignIn() {
       } else {
         router.push(callbackUrl)
       }
-    } catch (error) {
+    } catch {
       setError("An error occurred. Please try again.")
     } finally {
       setIsLoading(false)
@@ -49,10 +50,13 @@ export default function SignIn() {
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div className="text-center">
-          <img 
+          <Image 
             src="https://ke.kcbgroup.com/templates/corporate/images/logo.svg" 
             alt="KCB Logo" 
-            className="mx-auto h-20 w-auto"
+            className="mx-auto"
+            width={80}
+            height={80}
+            priority
           />
           <h2 className="mt-6 text-3xl font-bold text-slate-900" style={{ fontFamily: "Raleway, sans-serif" }}>
             Sign in to your account
@@ -169,5 +173,20 @@ export default function SignIn() {
         </Card>
       </div>
     </div>
+  )
+}
+
+export default function SignIn() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lime-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <SignInForm />
+    </Suspense>
   )
 }
