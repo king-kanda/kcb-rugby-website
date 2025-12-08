@@ -8,7 +8,7 @@ export default function ChatWidgetWrapper() {
       appToken: "nw_R7-Vll42R0ORauQ0vIu0iVem",
       // appToken: "nw_JhdTsyYDZEYpulY-Hn-zaiW4", 
       sessionId: "user-12345", 
-      apiBaseUrl : "https://demo.nexuswave.ai",
+      // apiBaseUrl : "https://demo.nexuswave.ai",
       botAvatar: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHVwbDg4MzAwamgya3Nic3BrcGdhaXZqNnNrbWcwODB6MGp0ajNhOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/r3wko2AaqERGfkqvrw/giphy.gif"
     });
 
