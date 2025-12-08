@@ -4,7 +4,7 @@ import ChatWidget from "nexus-chat-widget";
 export default function ChatWidgetWrapper() {
   useEffect(() => {
     const chatWidget = new ChatWidget({
-      title: 'Squad Leader Bot',
+      title: 'Squad Leader Nexus AI',
       appToken: "nw_JhdTsyYDZEYpulY-Hn-zaiW4", 
       sessionId: "user-12345", 
       apiBaseUrl : "https://demo.nexuswave.ai",
