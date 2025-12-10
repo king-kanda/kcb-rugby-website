@@ -6,7 +6,7 @@ export default function ChatWidgetWrapper() {
     const chatWidget = new ChatWidget({
       title: 'Squad Leader Nexus AI eiii',
       // appToken: "nw_Y0Lb_FLVS1xgkCy5ePk6pzRd", // Prod Token
-      appToken: "nw_NOgcwnNS6Ca3Nv49oMj3ZKEl", // Demo Token
+      appToken: "nw_DrQa3WXiGfMfT4uItbQqtFxp", // Demo Token
       sessionId: "user-12345", 
       apiBaseUrl : "https://demo.nexuswave.ai",
       // apiBaseUrl : "http://localhost:8082",
